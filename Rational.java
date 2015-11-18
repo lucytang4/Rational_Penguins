@@ -1,3 +1,10 @@
+/*
+Team Penguins-- Jordan Louie, Lucy Tang
+APCS1 pd5
+HW32--Irrationality Stops Here
+2015-11-17
+*/
+
 public class Rational{
     private int _numerator;
     private int _denominator;
@@ -26,8 +33,8 @@ public class Rational{
 	return n + "/" + d;
     }
 
-    public double floatValue(){
-	return (double)(_numerator/_denominator);
+    public float floatValue(){
+	return (float)(1. * _numerator / _denominator);
     }
 
     //multiplys 
@@ -36,6 +43,7 @@ public class Rational{
 	_denominator = _denominator * r._denominator;	
     }
 
+    //divides
     public void divide(Rational r) {
 	_numerator = _numerator * r._denominator;
 	_denominator = _denominator * r._numerator;	
