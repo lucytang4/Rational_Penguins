@@ -34,49 +34,74 @@ public class Rational{
     }
 
     public double floatValue(){
-	return (double)(1. * n / d);
+	//return (double)(1. * n / d);
+	return 1. * n / d;
     }
 
     //multiplies
-    public void multiply(Rational r) {
-	n = n * r.n;
-	d = d * r.d;	
+    public void multiply(Rational a) {
+	n = n * a.n;
+	d = d * a.d;	
     }
 
     //divides
-    public void divide(Rational r) {
-	n = n * r.d;
-	d = d * r.n;	
+    public void divide(Rational a) {
+	n = n * a.d;
+	d = d * a.n;	
     }
 
     //adds
-    public void add(Rational r) {
-	n = (n * r.d) + (r.n * d);
-	d = d * r.d;
+    public void add(Rational a) {
+	n = (n * a.d) + (a.n * d);
+	d = d * a.d;
     }
 
     //subtract
-    public void subtract(Rational r){
-	n = (n * r.d) - (r.n * d);
-	d = d * r.d;
+    public void subtract(Rational a){
+	n = (n * a.d) - (a.n * d);
+	d = d * a.d;
     }
     
-    //greatest of given numbers
+    //greatest of given numbers, OLD CODE
     public int max(int a, int b){//using integer inputs
-	if (a < b){return b;}
+	if (a < b)return b;
 	return a;
     }
-    //smallest of given numbers
+    //smallest of given numbers, OLD CODE
     public int min(int a, int b){//using integer inputs
-	if (a < b){return a;}
+	if (a < b)return a;
 	return b;
     }
 
-    //finds le gcd of n and d
+    //greatest of given numbers, STATIC
+    public static int max2(int a, int b){//using integer inputs
+	if (a < b)return b;
+	return a;
+    }
+    //smallest of given numbers, STATIC
+    public static int min2(int a, int b){//using integer inputs
+	if (a < b)return a;
+	return b;
+    }
+
+    //finds le gcd of n and d, OLD CODE
     public int gcd(){
 	if (n == d) return n;
 	int greater = max(n,d); //finds greater of two num
 	int smaller = min(n,d); //finds lesser of two num
+	int GCD = smaller;
+	while (greater%GCD != 0 || smaller%GCD != 0){ //if nums arent divisible by same num
+	    GCD = greater%smaller; //divide greater by smaller
+	    greater = smaller;
+	}
+	return GCD;
+    }
+
+    //finds le gcd of n and d, STATIC
+    public static int gcd2(int num, int denom){
+	if (num == denom) return num;
+	int greater = max2(num,denom); //finds greater of two num
+	int smaller = min2(num,denom); //finds lesser of two num
 	int GCD = smaller;
 	while (greater%GCD != 0 || smaller%GCD != 0){ //if nums arent divisible by same num
 	    GCD = greater%smaller; //divide greater by smaller
@@ -90,6 +115,14 @@ public class Rational{
 	int GCD = gcd();
 	n /= GCD;
 	d /= GCD;
+    }
+
+    //check to see if two rational numbers are equal
+    public int compareTo(Rational a){
+	if (this.floatValue() == a.floatValue()) return 0;
+	if (this.floatValue() > a.floatValue()) return 1;
+	else
+	    return -1;
     }
 
     public static void main(String[] args) {
@@ -130,12 +163,13 @@ public class Rational{
 
 	System.out.println("------------------------------------");
 
+	//PHASE 2
 	//resets values
 	r.n = 2;
 	r.d = 3;
 	s.n = 1;
 	s.d = 2;
-	
+
 	System.out.println("r = " + r); //should be 2/3
 	r.add(s);  //Adds r to s, changes r to 7/6.  s remains 1/2
 	System.out.println("s = " + s); //should be 1/2
@@ -143,6 +177,24 @@ public class Rational{
 	System.out.println("t = " + t); //should be 4/18
 	t.reduce(); //Changes t to 2/9
 	System.out.println("t = " + t); //should be 2/9
+
+	System.out.println("------------------------------------");
+	
+	//PHASE 3
+	//resets values
+	r.n = 12;
+	r.d = 36;
+	s.n = 7;
+	s.d = 14;
+	t.n = 14;
+	t.d = 72;
+
+	System.out.println("r = " + r); //should be 12/36
+	r.gcd2(n,d);  //should be 12
+	System.out.println("s = " + s); //should be 7/14
+
+	System.out.println("t = " + t); //should be 14/72
+	System.out.println(t.compareTo(s)); //should be 0 since equal
 
     }
 }
