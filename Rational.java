@@ -49,6 +49,42 @@ public class Rational{
 	d = d * r.n;	
     }
 
+    //adds
+    public void add(Rational r) {
+	n = (n * r.d) + (r.n * d);
+	d = d * r.d;
+    }
+
+    //subtract
+    public void subtract(Rational r){
+	n = (n * r.d) - (r.n * d);
+	d = d * r.d;
+    }
+    
+    //greatest of given numbers
+    public static int max(int a, int b){//using integer inputs
+	if (a < b){return b;}
+	return a;
+    }
+    //smallest of given numbers
+    public static int min(int a, int b){//using integer inputs
+	if (a < b){return a;}
+	return b;
+    }
+
+    //finds le gcd of n and d
+    public int gcd(){
+	if (n == d) return n;
+	int greater = max(n,d); //finds greater of two num
+	int smaller = min(n,d); //finds lesser of two num
+	int GCD = smaller;
+	while (greater%GCD != 0 || smaller%GCD != 0){ //if nums arent divisible by same num
+	    GCD = greater%smaller; //divide greater by smaller
+	    greater = smaller;
+	}
+	return GCD;
+    }
+
     public static void main(String[] args) {
 	Rational r = new Rational(2,3); //Stores the rational number 2/3
 	Rational s = new Rational(1,2); //Stores the rational number 1/2
