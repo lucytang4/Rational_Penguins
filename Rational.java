@@ -62,12 +62,12 @@ public class Rational{
     }
     
     //greatest of given numbers
-    public static int max(int a, int b){//using integer inputs
+    public int max(int a, int b){//using integer inputs
 	if (a < b){return b;}
 	return a;
     }
     //smallest of given numbers
-    public static int min(int a, int b){//using integer inputs
+    public int min(int a, int b){//using integer inputs
 	if (a < b){return a;}
 	return b;
     }
@@ -83,6 +83,12 @@ public class Rational{
 	    greater = smaller;
 	}
 	return GCD;
+    }
+
+    public void reduce(){
+	int GCD=gcd();
+	n/=gcd;
+	d/=gcd;
     }
 
     public static void main(String[] args) {
