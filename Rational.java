@@ -53,8 +53,10 @@ public class Rational{
 	Rational r = new Rational(2,3); //Stores the rational number 2/3
 	Rational s = new Rational(1,2); //Stores the rational number 1/2
 
-	System.out.println("r = " + r + " = " + r.floatValue()); //should be 2/3
-	System.out.println("s = " + s + " = " + s.floatValue()); //should be 1/2
+	System.out.println("r = " + r + " = " + r.floatValue());
+	//should be 2/3  = 0.6666666666666666
+	System.out.println("s = " + s + " = " + s.floatValue());
+	//should be 1/2 = 0.5
 
 	//test multiply
 	System.out.print(r + " x " + s + " = ");
@@ -78,8 +80,8 @@ public class Rational{
 	System.out.println(r);
 
 	System.out.println("r = " + r + " = " + r.floatValue());
-	//should be 48/72 = .33
+	//should be 48/72 = 0.6666666666666666
 	System.out.println("s = " + s + " = " + s.floatValue());
-	//should be 12/24 = .5
+	//should be 12/24 = 0.5
     }
 }
