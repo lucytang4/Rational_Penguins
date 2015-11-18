@@ -33,8 +33,8 @@ public class Rational{
 	return n + "/" + d;
     }
 
-    public float floatValue(){
-	return (float)(1. * _numerator / _denominator);
+    public double floatValue(){
+	return (double)(1. * _numerator / _denominator);
     }
 
     //multiplys 
