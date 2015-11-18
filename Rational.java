@@ -28,16 +28,16 @@ public class Rational{
 
     //return string of rational number
     public String toString(){
-	String n = Integer.toString(n);
-	String d = Integer.toString(d);
-	return n + "/" + d;
+	String a = Integer.toString(n);
+	String b = Integer.toString(d);
+	return a + "/" + b;
     }
 
     public double floatValue(){
 	return (double)(1. * n / d);
     }
 
-    //multiplys 
+    //multiplies
     public void multiply(Rational r) {
 	n = n * r.n;
 	d = d * r.d;	
@@ -85,15 +85,17 @@ public class Rational{
 	return GCD;
     }
 
+    //dividing both numerator and denominator by gcd to simplify
     public void reduce(){
-	int GCD=gcd();
-	n/=gcd;
-	d/=gcd;
+	int GCD = gcd();
+	n /= GCD;
+	d /= GCD;
     }
 
     public static void main(String[] args) {
 	Rational r = new Rational(2,3); //Stores the rational number 2/3
 	Rational s = new Rational(1,2); //Stores the rational number 1/2
+	Rational t = new Rational(4,18); //Stores the rational number 4/18
 
 	System.out.println("r = " + r + " = " + r.floatValue());
 	//should be 2/3  = 0.6666666666666666
@@ -125,5 +127,22 @@ public class Rational{
 	//should be 48/72 = 0.6666666666666666
 	System.out.println("s = " + s + " = " + s.floatValue());
 	//should be 12/24 = 0.5
+
+	System.out.println("------------------------------------");
+
+	//resets values
+	r.n = 2;
+	r.d = 3;
+	s.n = 1;
+	s.d = 2;
+	
+	System.out.println("r = " + r); //should be 2/3
+	r.add(s);  //Adds r to s, changes r to 7/6.  s remains 1/2
+	System.out.println("s = " + s); //should be 1/2
+	System.out.println("r = " + r); //should be 7/6
+	System.out.println("t = " + t); //should be 4/18
+	t.reduce(); //Changes t to 2/9
+	System.out.println("t = " + t); //should be 2/9
+
     }
 }
