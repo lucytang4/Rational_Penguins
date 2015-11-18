@@ -1,18 +1,18 @@
 /*
-Team Penguins-- Jordan Louie, Lucy Tang
+Team Penguins-- Dorothy Ng, Lucy Tang
 APCS1 pd5
-HW32--Irrationality Stops Here
-2015-11-17
+HW33 -- Do You Even Add, Bro?
+2015-11-18
 */
 
 public class Rational{
-    private int _numerator;
-    private int _denominator;
+    private int n;
+    private int d;
 
     //default constructor
     public Rational(){
-	_numerator = 0;
-	_denominator = 1;
+	n = 0;
+	d = 1;
     }
 
     //overloaded constructor
@@ -21,32 +21,32 @@ public class Rational{
 	if (denom == 0)
 	    System.out.println("invalid denominator value");
 	else{
-	    _numerator = num;
-	    _denominator = denom;
+	    n = num;
+	    d = denom;
 	}
     }
 
     //return string of rational number
     public String toString(){
-	String n = Integer.toString(_numerator);
-	String d = Integer.toString(_denominator);
+	String n = Integer.toString(n);
+	String d = Integer.toString(d);
 	return n + "/" + d;
     }
 
     public double floatValue(){
-	return (double)(1. * _numerator / _denominator);
+	return (double)(1. * n / d);
     }
 
     //multiplys 
     public void multiply(Rational r) {
-	_numerator = _numerator * r._numerator;
-	_denominator = _denominator * r._denominator;	
+	n = n * r.n;
+	d = d * r.d;	
     }
 
     //divides
     public void divide(Rational r) {
-	_numerator = _numerator * r._denominator;
-	_denominator = _denominator * r._numerator;	
+	n = n * r.d;
+	d = d * r.n;	
     }
 
     public static void main(String[] args) {
