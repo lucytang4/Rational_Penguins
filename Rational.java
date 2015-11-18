@@ -10,10 +10,9 @@ public class Rational{
 
     //overloaded constructor
     public Rational(int num, int denom){
-	if (denom = 0){
+	this();
+	if (denom == 0)
 	    System.out.println("invalid denominator value");
-	    this();
-	}
 	else{
 	    _numerator = num;
 	    _denominator = denom;
@@ -24,6 +23,55 @@ public class Rational{
     public String toString(){
 	String n = Integer.toString(_numerator);
 	String d = Integer.toString(_denominator);
-	return n + "\/" + d;
+	return n + "/" + d;
+    }
+
+    public double floatValue(){
+	return (double)(_numerator/_denominator);
+    }
+
+    //multiplys 
+    public void multiply(Rational r) {
+	_numerator = _numerator * r._numerator;
+	_denominator = _denominator * r._denominator;	
+    }
+
+    public void divide(Rational r) {
+	_numerator = _numerator * r._denominator;
+	_denominator = _denominator * r._numerator;	
+    }
+
+    public static void main(String[] args) {
+	Rational r = new Rational(2,3); //Stores the rational number 2/3
+	Rational s = new Rational(1,2); //Stores the rational number 1/2
+
+	System.out.println("r = " + r + " = " + r.floatValue()); //should be 2/3
+	System.out.println("s = " + s + " = " + s.floatValue()); //should be 1/2
+
+	//test multiply
+	System.out.print(r + " x " + s + " = ");
+	r.multiply(s); //Multiplies r by s, changes r to 2/6.  s remains 1/2
+	System.out.println(r);
+
+	System.out.print(s + " x " + r + " = ");
+	s.multiply(r); //Multiplies s by r, changes s to 2/12.  r remains 2/6
+	System.out.println(s);
+
+	System.out.println("r = " + r); //should be 2/6
+	System.out.println("s = " + s); //should be 2/12
+
+	//test divide
+	System.out.print(s + " / " + r + " = ");
+	s.divide(r); //Divides s by r, changes s to 12/24.  r remains 2/6
+	System.out.println(s);
+
+	System.out.print(r + " / " + s + " = ");
+	r.divide(s); //Divides r by s, changes r to 48/72.  s remains 12/24
+	System.out.println(r);
+
+	System.out.println("r = " + r + " = " + r.floatValue());
+	//should be 48/72 = .33
+	System.out.println("s = " + s + " = " + s.floatValue());
+	//should be 12/24 = .5
     }
 }
