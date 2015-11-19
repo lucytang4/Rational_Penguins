@@ -6,8 +6,8 @@ HW33 -- Do You Even Add, Bro?
 */
 
 public class Rational{
-    private int n;
-    private int d;
+    private int n; //numerator
+    private int d; //denominator
 
     //default constructor
     public Rational(){
@@ -34,7 +34,6 @@ public class Rational{
     }
 
     public double floatValue(){
-	//return (double)(1. * n / d);
 	return 1. * n / d;
     }
 
@@ -187,10 +186,10 @@ public class Rational{
 	s.n = 7;
 	s.d = 14;
 	t.n = 14;
-	t.d = 72;
+	t.d = 28;
 
 	System.out.println("r = " + r); //should be 12/36
-	r.gcd2(n,d);  //should be 12
+	r.gcd2(r.n,r.d);  //should be 12
 	System.out.println("s = " + s); //should be 7/14
 
 	System.out.println("t = " + t); //should be 14/72
