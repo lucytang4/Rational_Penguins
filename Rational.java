@@ -1,7 +1,7 @@
 /*
-Team Penguins-- Dorothy Ng, Lucy Tang
+Team Penguins-- Lucy Tang, Vincent Tang
 APCS1 pd5
-HW33 -- Do You Even Add, Bro?
+HW37 -- Rational Equality
 2015-11-18
 */
 
@@ -124,6 +124,11 @@ public class Rational{
 	    return -1;
     }
 
+    //override equals method
+    public boolean equals(Object other){
+	return this.floatValue() == ((Rational)other).floatValue();
+    }
+
     public static void main(String[] args) {
 	Rational r = new Rational(2,3); //Stores the rational number 2/3
 	Rational s = new Rational(1,2); //Stores the rational number 1/2
@@ -194,6 +199,9 @@ public class Rational{
 
 	System.out.println("t = " + t); //should be 14/72
 	System.out.println(t.compareTo(s)); //should be 0 since equal
+
+	System.out.println(t.equals(s)); //should be true
+	System.out.println(t.equals(r)); //should be false
 
     }
 }
